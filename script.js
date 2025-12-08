@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMessage = document.getElementById('statusMessage');
 
     // !!! IMPORTANT: REPLACE THIS WITH YOUR ACTUAL CLOUD FUNCTION URL !!!
-    const API_ENDPOINT = 'YOUR_CLOUD_FUNCTION_URL_HERE'; 
+    const API_ENDPOINT = 'https://us-central1-boxwood-coil-480604-g3.cloudfunctions.net/generate-document'; 
 
     /**
      * Shows a status message and updates the button state.
