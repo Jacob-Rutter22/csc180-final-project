@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Generator</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <header>
+        <h1>🤖 AI Document Generator</h1>
+        <p>Specify your paper details and formatting options to generate a sample DOCX file.</p>
+    </header>
+
+    <main>
+        <form id="documentForm">
+            
+            <section class="form-section">
+                <h2>1. Paper Content Details</h2>
+                <div class="form-group">
+                    <label for="topic">Paper Topic / Subject:</label>
+                    <input type="text" id="topic" name="topic" placeholder="e.g., The impact of serverless architecture on web deployment" required>
+                    <small>This will be used by the AI to generate the sample text.</small>
+                </div>
+                <div class="form-group">
+                    <label for="type">Paper Type:</label>
+                    <select id="type" name="type" required>
+                        <option value="research">Research Paper</option>
+                        <option value="essay">Expository Essay</option>
+                        <option value="review">Literature Review</option>
+                        <option value="report">Technical Report</option>
+                    </select>
+                </div>
+            </section>
+            
+            <hr>
+
+            <section class="form-section">
+                <h2>2. Formatting & Style</h2>
+                <div class="form-group">
+                    <label for="style">Citation Style:</label>
+                    <select id="style" name="style" required>
+                        <option value="APA">APA (7th Edition)</option>
+                        <option value="MLA">MLA (9th Edition)</option>
+                        <option value="Chicago">Chicago</option>
+                        <option value="IEEE">IEEE</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Spacing:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="single" name="spacing" value="single" required>
+                        <label for="single">Single</label>
+                        
+                        <input type="radio" id="double" name="spacing" value="double" checked>
+                        <label for="double">Double</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pages">Sample Page Count:</label>
+                    <input type="number" id="pages" name="pages" min="1" max="10" value="3" required>
+                    <small>The final document will be styled to show this approximate page count.</small>
+                </div>
+            </section>
+
+            <hr>
+
+            <button type="submit" id="generateButton">Generate Document (.docx)</button>
+            <p id="statusMessage" class="hidden">Generating...</p>
+
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Document Generator. Powered by Gemini.</p>
+    </footer>
+
+    <script src="script.js"></script> 
+
+</body>
+</html>
