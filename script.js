@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const [key, value] of formData.entries()) {
             data[key] = value;
         }
-
+        // Update status w/ doc gen
         updateStatus('Requesting document generation from the server...', true);
 
         try {
