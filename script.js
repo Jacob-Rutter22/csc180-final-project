@@ -1,11 +1,9 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('documentForm');
     const generateButton = document.getElementById('generateButton');
     const statusMessage = document.getElementById('statusMessage');
 
-    // !!! IMPORTANT: REPLACE THIS WITH YOUR ACTUAL CLOUD FUNCTION URL !!!
+    // Call the python API endpoint
     const API_ENDPOINT = 'https://us-central1-boxwood-coil-480604-g3.cloudfunctions.net/generate-document'; 
 
     /**
@@ -25,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Stop the default form submission
 
-        // 1. Gather all form data
+        // Gather all form data
         const formData = new FormData(form);
         const data = {};
         for (const [key, value] of formData.entries()) {
