@@ -5,15 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const generateButton = document.getElementById('generateButton');
     const statusMessage = document.getElementById('statusMessage');
 
-    // !!! IMPORTANT: REPLACE THIS WITH YOUR ACTUAL CLOUD FUNCTION URL !!!
+    // Call the Cloud endpoint
     const API_ENDPOINT = 'https://us-central1-boxwood-coil-480604-g3.cloudfunctions.net/generate-document';
 
-    /**
-     * Shows a status message and updates the button state.
-     * @param {string} message - The text message to display.
-     * @param {boolean} isGenerating - Whether the process is currently running.
-     * @param {string} [className=''] - Optional class for styling (e.g., 'error', 'success').
-     */
     function updateStatus(message, isGenerating, className = '') {
         statusMessage.textContent = message;
         statusMessage.className = className;
@@ -25,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Stop the default form submission
 
-        // 1. Gather all form data
+        // Gather all form data
         const formData = new FormData(form);
         const data = {};
         for (const [key, value] of formData.entries()) {
@@ -35,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateStatus('Requesting document generation from the server...', true);
 
         try {
-            // 2. Call the Cloud Function API
+            // Call the Cloud Function API
             const response = await fetch(API_ENDPOINT, {
                 method: 'POST',
                 headers: {
@@ -50,11 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`Server error: ${response.status} - ${errorText}`);
             }
 
-            // 3. Process the binary data (Blob)
+            // Process the binary data (Blob)
             // The Cloud Function sends the DOCX file as a raw data stream.
             const blob = await response.blob(); 
             
-            // 4. Trigger the download
+            // Trigger the download
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -75,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             a.click();
             a.remove();
             
-            // 5. Clean up and inform the user
+            // Clean up and inform the user
             URL.revokeObjectURL(url);
             updateStatus('✅ Success! Your document has been downloaded.', false, 'success');
 
