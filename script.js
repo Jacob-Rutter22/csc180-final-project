@@ -6,9 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMessage = document.getElementById('statusMessage');
 
     // !!! IMPORTANT: REPLACE THIS WITH YOUR ACTUAL CLOUD FUNCTION URL !!!
-    const API_ENDPOINT = 'https://us-central1-boxwood-coil-480604-g3.cloudfunctions.net/generate-document'; 
+    const API_ENDPOINT = 'https://us-central1-boxwood-coil-480604-g3.cloudfunctions.net/generate-document';
 
-    // Update status
+    /**
+     * Shows a status message and updates the button state.
+     * @param {string} message - The text message to display.
+     * @param {boolean} isGenerating - Whether the process is currently running.
+     * @param {string} [className=''] - Optional class for styling (e.g., 'error', 'success').
+     */
     function updateStatus(message, isGenerating, className = '') {
         statusMessage.textContent = message;
         statusMessage.className = className;
