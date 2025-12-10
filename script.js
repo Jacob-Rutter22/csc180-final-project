@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         generateButton.disabled = isGenerating;
         generateButton.textContent = isGenerating ? 'Generating...' : 'Generate Document (.docx)';
     }
-
+    // Add event listener
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Stop the default form submission
 
